@@ -40,11 +40,9 @@ def main():
         else:
             command = 'start'
         serverList = []
-        # Iterate over instances like wasserver:BSN85Cell01Node01:ECS01
         for m in re.finditer('wasserver:\w+:\w+', stdout_value):
             # m.group(0) is the actual text rather than the match object
             server = m.group(0)
-            # Isolate the ECS01 part of the string in, for example, wasserver:BSN85Cell01Node01:ECS01 
             server = server.split(':')[2]
             serverList.append(server)
 

@@ -1,0 +1,17 @@
+---
+- hosts: single
+  become: yes
+  become_user: wasadm
+  tasks:
+  - name: stop all
+    appserver:
+      state: stopped
+      profileName: "{{profile}}"
+    register: appserver
+  - debug: var=appserver.stdout_lines
+  - name: start all
+    appserver:
+      state: started
+      profileName: "{{ profile }}"
+    register: appserver 
+  - debug: var=appserver.stdout_lines

@@ -6,12 +6,12 @@
   - name: stop all
     appserver:
       state: stopped
-      profileName: "{{profile}}"
+      psall: "{{psall}}"
     register: appserver
   - debug: var=appserver.stdout_lines
   - name: start all
     appserver:
       state: started
-      profileName: "{{ profile }}"
+      psall: "{{psall}}"
     register: appserver 
   - debug: var=appserver.stdout_lines

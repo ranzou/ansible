@@ -3,15 +3,9 @@
   become: yes
   become_user: wasadm
   tasks:
-  - name: stop all
-    appserver_control:
-      state: stopped
-      psall: "{{psall}}"
-    register: appserver_control
-  - debug: var=appserver_control.stdout_lines
   - name: start all
     appserver_control:
       state: started
       psall: "{{psall}}"
-    register: appserver_control 
+    register: appserver_control
   - debug: var=appserver_control.stdout_lines

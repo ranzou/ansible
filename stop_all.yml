@@ -4,8 +4,8 @@
   become_user: wasadm
   tasks:
   - name: stop all
-    appserver:
+    appserver_control:
       state: stopped
       psall: "{{psall}}"
-    register: appserver
-  - debug: var=appserver.stdout_lines
+    register: appserver_control
+  - debug: var=appserver_control.stdout_lines
